@@ -1,5 +1,6 @@
 from app.extensions import db
 
+
 class Instructor(db.Model):
     __tablename__ = "instructors"
 

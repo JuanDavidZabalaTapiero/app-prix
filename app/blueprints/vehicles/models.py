@@ -1,5 +1,6 @@
 from app.extensions import db
 
+
 class Vehicle(db.Model):
     __tablename__ = "vehicles"
 
