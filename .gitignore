@@ -1,5 +1,16 @@
+# Info sensible
+.env
+
 # Entorno virtual
 .venv/
+
+# Cache de Python
+__pycache__/
+*/__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
 # Ruff
 .ruff_cache/
