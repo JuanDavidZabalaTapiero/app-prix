@@ -1,8 +1,30 @@
 {% extends "base.html" %}
 
+{% set flash_categories = {
+"error_students_home": "alert-danger",
+"success_students_home": "alert-success"
+} %}
+
 {% block title %}Inicio | Alumnos{% endblock %}
 
 <!-- BODY -->
 {% block body %}
-<h1>APRENDIZ</h1>
+
+<header>
+    <nav>
+        <a href="{{url_for('students.home')}}">Alumnos</a>
+    </nav>
+</header>
+
+<main>
+    <h1>Alumnos</h1>
+
+    <a href="{{url_for('students.new_student')}}">Registrar</a>
+
+    <h2>Buscar alumnos</h2>
+    <form method="post">
+        <input type="text" name="search_term">
+        <button type="submit">Buscar</button>
+    </form>
+</main>
 {% endblock %}
