@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+<!-- MENSAJES FLASH -->
+{% set flash_categories = {
+"error_categories_edit_category": "alert-danger",
+"success_categories_edit_category": "alert-success"
+} %}
+
+{% block title %}Editar | Categoría{% endblock %}
+
+{% block body %}
+{% include "headers/main_header.html" %}
+
+<h1>Editar Categoría</h1>
+
+{% endblock %}

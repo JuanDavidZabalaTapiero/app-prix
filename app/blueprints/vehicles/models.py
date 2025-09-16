@@ -10,3 +10,4 @@ class Vehicle(db.Model):
     brand = db.Column(db.String(100), nullable=False)
     type = db.Column(db.String(20), nullable=False)
     status = db.Column(db.String(20), nullable=False)
+    enabled = db.Column(db.Boolean, default=True, nullable=False)

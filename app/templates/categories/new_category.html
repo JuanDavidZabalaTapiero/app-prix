@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+<!-- MENSAJES FLASH -->
+{% set flash_categories = {
+"error_categories_new_category": "alert-danger",
+"success_categories_new_category": "alert-success"
+} %}
+
+{% block title %}Registrar | Categoría{% endblock %}
+
+{% block body %}
+{% include "headers/main_header.html" %}
+
+<div class="container mt-5">
+    <!-- TÍTULO -->
+    <h1 class="text-center mb-4">Registrar Categoría</h1>
+
+    <!-- CONTENEDOR DEL FORMULARIO -->
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!-- CARD PARA DARLE ESTILO -->
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <!-- FORMULARIO -->
+                    <form action="{{ url_for('categories.create_category') }}" method="post">
+
+                        <!-- CAMPO: Nombre de la categoría -->
+                        <div class="mb-3">
+                            <label for="category_name" class="form-label">Nombre de la categoría</label>
+                            <input type="text" name="category_name" id="category_name" class="form-control"
+                                placeholder="Ej: B1, A2..." required>
+                        </div>
+
+                        <!-- BOTONES (alineados horizontalmente y centrados) -->
+                        <div class="d-flex justify-content-between gap-3 mt-4">
+                            <!-- Botón cancelar -->
+                            <a href="{{ url_for('categories.home') }}" class="btn btn-outline-secondary">
+                                <i class="bi bi-x-circle"></i> Cancelar
+                            </a>
+
+                            <!-- Botón registrar -->
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-check-circle"></i> Registrar
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

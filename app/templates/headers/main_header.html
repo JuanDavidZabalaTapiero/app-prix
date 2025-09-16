@@ -1,0 +1,31 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+
+            <!-- BOTÓN RESPONSIVE (Hamburguesa en móvil) -->
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- LINKS DE NAVEGACIÓN -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.endpoint == 'students.home' %}active{% endif %}"
+                            href="{{ url_for('students.home') }}">
+                            Alumnos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.endpoint == 'categories.home' %}active{% endif %}"
+                            href="{{ url_for('categories.home') }}">
+                            Categorías
+                        </a>
+                    </li>
+                    <!-- Más links aquí -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

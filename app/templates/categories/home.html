@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+<!-- MENSAJES FLASH -->
+{% set flash_categories = {
+"error_categories_home": "alert-danger",
+"success_categories_home": "alert-success"
+} %}
+
+
+{% block title %}Inicio | Categoría{% endblock %}
+
+{% block body %}
+
+{% include "headers/main_header.html" %}
+
+<h1>Categorías</h1>
+
+<a href="{{url_for('categories.new_category')}}">Registrar</a>
+
+{% if categories %}
+<table>
+    <thead>
+        <tr>
+            <th>Categoría</th>
+            <th>Editar</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for category in categories %}
+        <tr>
+            <td>{{category.name}}</td>
+            <td>
+                <a href=""><i class="bi bi-pen-fill"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No hay categorías registradas</p>
+
+{% endif %}
+
+{% endblock %}

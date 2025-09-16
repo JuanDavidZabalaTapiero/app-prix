@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+<!-- MENSAJES FLASH -->
+{% set flash_categories = {
+"error_students_new_enrollment": "alert-danger",
+"success_students_new_enrollment": "alert-success"
+} %}
+
+{% block title %}Matricular | Alumno{% endblock %}
+
+{% block body %}
+
+{% include "headers/main_header.html" %}
+
+<main class="container mt-5 d-flex justify-content-center">
+    <!-- CONTENEDOR PRINCIPAL (centrado y con sombra) -->
+    <div class="card shadow-sm w-100" style="max-width: 600px;">
+        <div class="card-body">
+
+            <!-- TÍTULO DE LA PÁGINA -->
+            <h1 class="mb-4 text-center">Matricular Alumno</h1>
+
+            <!-- FORMULARIO DE MATRÍCULA -->
+            <form action="{{ url_for('students.create_enrollment') }}" method="post" class="row g-3">
+
+                <!-- CAMPO: Identificación del alumno -->
+                <div class="col-12">
+                    <label for="student_document_id" class="form-label">Identificación del alumno</label>
+                    <input type="text" name="student_document_id" id="student_document_id" class="form-control"
+                        required>
+                </div>
+
+                {% if categories %}
+                <!-- CAMPO: Categoría (select dinámico) -->
+                <div class="col-12">
+                    <label for="category_id" class="form-label">Categoría</label>
+                    <select name="category_id" id="category_id" class="form-select" required>
+                        {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- BOTONES DE ACCIÓN -->
+                <div class="col-12 d-flex justify-content-between mt-4">
+                    <!-- BOTÓN CANCELAR -->
+                    <a href="{{ url_for('students.home') }}" class="btn btn-secondary">
+                        <i class="bi bi-x-circle"></i> Cancelar
+                    </a>
+
+                    <!-- BOTÓN MATRICULAR -->
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-check-circle"></i> Matricular
+                    </button>
+                </div>
+
+                {% else %}
+                <!-- ALERTA SI NO HAY CATEGORÍAS DISPONIBLES -->
+                <div class="alert alert-warning text-center">
+                    Se necesita al menos una categoría para poder matricular
+                </div>
+                {% endif %}
+            </form>
+            <!-- FIN FORMULARIO -->
+
+        </div>
+    </div>
+</main>
+
+{% endblock %}

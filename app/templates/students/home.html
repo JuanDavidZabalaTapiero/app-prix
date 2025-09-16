@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+<!-- MENSAJES FLASH -->
 {% set flash_categories = {
 "error_students_home": "alert-danger",
 "success_students_home": "alert-success"
@@ -10,21 +11,34 @@
 <!-- BODY -->
 {% block body %}
 
-<header>
-    <nav>
-        <a href="{{url_for('students.home')}}">Alumnos</a>
-    </nav>
-</header>
+{% include "headers/main_header.html" %}
 
 <main>
     <h1>Alumnos</h1>
 
     <a href="{{url_for('students.new_student')}}">Registrar</a>
+    <a href="{{url_for('students.new_enrollment')}}">Matricular</a>
 
     <h2>Buscar alumnos</h2>
     <form method="post">
         <input type="text" name="search_term">
         <button type="submit">Buscar</button>
     </form>
+
+    {% if students %}
+    {% for student in students %}
+    <h2>{{student.name}}</h2>
+    {% if student.enrollments %}
+    {% for enrollment in student.enrollments %}
+    <a href="/">{{enrollment.category.name}}</a>
+    {% endfor %}
+
+    {% else %}
+    <p>No tiene matriculas registradas</p>
+
+    {% endif %}
+
+    {% endfor %}
+    {% endif %}
 </main>
 {% endblock %}
